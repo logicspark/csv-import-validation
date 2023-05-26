@@ -1,8 +1,6 @@
 
 import { ValidationConfig, ParsedResults, RowError } from '../../src/shared/interfaces/csv-file.interfaces';
 import { isEmpty, isString, isFunction, isNumber, isNull } from "lodash";
-import { ColumnTypes } from '../shared/interfaces/column-types.interfaces';
-import { log } from 'console';
 export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig) {
     const file: ParsedResults = {
         inValidData: [],
@@ -21,7 +19,7 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
                     columnIndex: columnIndex,
                     message: isFunction(valueConfig.requiredError)
                         ? valueConfig.requiredError(valueConfig.headerName, rowIndex + 1, columnIndex)
-                        : String(valueConfig.headerName + ` is Type ${valueConfig.type} in the ` + (rowIndex + 1) + ' row / ' + (columnIndex) + ' column')
+                        : String(valueConfig.headerName + ` is Type in ${valueConfig.type}  row /` + (rowIndex + 1) + 'column' + (columnIndex))
                 });
             }
             if (valueConfig.required && (isNull(columnVal) || isEmpty(columnVal))) {
@@ -30,7 +28,7 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
                     columnIndex: columnIndex,
                     message: isFunction(valueConfig.requiredError)
                         ? valueConfig.requiredError(valueConfig.headerName, rowIndex + 1, columnIndex)
-                        : String(valueConfig.headerName + ' is required in the ' + (rowIndex + 1) + ' row / ' + (columnIndex) + ' column')
+                        : String(valueConfig.headerName + ' is required in ' + ' row / ' + (rowIndex + 1) + ', column' + (columnIndex))
                 });
             }
             columnData[valueConfig.keyName] = convertType(columnVal ,valueConfig.type);

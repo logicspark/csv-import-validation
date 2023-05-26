@@ -25,19 +25,19 @@ frameworks/libraries ที่ใช้ในการจัดทำ sheet-util
 npm install
 
 ```bash
-npm install @logicspark/sheet-utilities-ts
+npm install sheet-utilities
 ```
 
 Or yarn
 
 ```bash
-yarn add @logicspark/sheet-utilities-ts
+yarn add sheet-utilities
 ```
 
 Or pnpm
 
 ```bash
-pnpm add @logicspark/sheet-utilities-ts
+pnpm install sheet-utilities
 ```
 
 

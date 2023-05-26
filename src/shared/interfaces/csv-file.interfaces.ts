@@ -1,7 +1,5 @@
-import { ParseConfig } from 'papaparse';
-
 export interface FieldSchema {
-	name: string;
+	headerName: string;
 	keyName: string;
 	type: 'boolean' | 'number' | 'string';
 	optional?: boolean;
@@ -25,6 +23,5 @@ export interface ParsedResults<Row = any, Error = RowError> {
 	inValidData: Error[];
 }
 
-export interface ValidatorConfig {
-	headers: FieldSchema[];
-}
+export type ValidationConfig = FieldSchema[];
+

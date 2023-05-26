@@ -2,21 +2,19 @@
 
 import { CsvUtiltiess } from './csv/csv-utiltiess';
 import { readFileSync, createReadStream, readFile } from 'fs'
-import { ValidatorConfig } from './shared/interfaces/csv-file.interfaces';
+import {  ValidationConfig } from './shared/interfaces/csv-file.interfaces';
 const main = async () => {
   const filePath = 'files/CCTV-exclude_roof.csv';
   const reading =  readFileSync(filePath);
-    const CSVConfig: ValidatorConfig = {
-      headers: [
-        { name: 'name', keyName: 'name', type: 'string' },
-        { name: 'ip', keyName: 'ip', type: 'string', required: true },
-        { name: 'buildingId', keyName: 'buildingId', type: 'number', required: true},
-        { name: 'floorId', keyName: 'floorId', type: 'number', required: true },
-        { name: 'zoneId', keyName: 'zoneId', type: 'string' },
-        { name: 'room', keyName: 'room', type: 'string', required: true },
-        { name: 'type', keyName: 'type', type: 'string', required: true }
-      ]
-    };
+    const CSVConfig: ValidationConfig = [
+      { headerName: 'name', keyName: 'name', type: 'string'},
+      { headerName: 'ip', keyName: 'ip', type: 'string', required: true },
+      { headerName: 'buildingId', keyName: 'buildingId', type: 'number', required: true},
+      { headerName: 'floorId', keyName: 'floorId', type: 'number', required: true },
+      { headerName: 'zoneId', keyName: 'zoneId', type: 'string' },
+      { headerName: 'room', keyName: 'room', type: 'string', required: true },
+      { headerName: 'type', keyName: 'type', type: 'string', required: true }
+    ]
     const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
     console.log(data);
 

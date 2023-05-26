@@ -2,8 +2,8 @@ import { Workbook } from 'exceljs';
 import { bufferToStream } from '../shared/helpers'
 import * as path from 'path'
 import { parse } from 'papaparse'
-import { readFileSync, createReadStream } from 'fs'
-import { ValidatorConfig } from '../shared/interfaces/csv-file.interfaces';
+import { readFileSync } from 'fs'
+import { ValidationConfig } from '../shared/interfaces/csv-file.interfaces';
 import { _csvDataAndValidateFile } from '../validator/csv-file-validator';
 import { Readable } from "stream";
 const workbook = new Workbook();
@@ -51,9 +51,9 @@ class CSV {
     }
 
 
-    readAndFileValidator(csvFilePath: string, csvfileConfig: ValidatorConfig) {
+    readAndFileValidator(csvFilePath: string, csvfileConfig: ValidationConfig) {
         return new Promise(function (resolve, reject) {
-            if (!csvfileConfig || (csvfileConfig && !csvfileConfig.headers)) {
+            if (!csvfileConfig) {
                 return resolve({
                     inValidData: [{ message: 'config headers are required' }],
                     data: []
@@ -62,7 +62,7 @@ class CSV {
             const csvString = readFileSync(csvFilePath, 'utf-8');
             const result = parse(csvString, { header: true });
             const headers = result.meta.fields;
-            const expectedHeaders = csvfileConfig.headers.map(headers => headers.name);
+            const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
             if (headers?.length !== expectedHeaders.length || !headers?.every((header, index) => header === expectedHeaders[index])) {
                 return resolve({
                     inValidData: [{ message: `Expected headers ${expectedHeaders.join(', ')}, but got ${headers?.join(', ')}` }],
@@ -82,9 +82,9 @@ class CSV {
         });
     }
 
-    readBufferAndValidator(buffer: Buffer, csvfileConfig: ValidatorConfig) {
+    readBufferAndValidator(buffer: Buffer, csvfileConfig: ValidationConfig) {
         return new Promise(async function (resolve, reject) {
-            if (!csvfileConfig || (csvfileConfig && !csvfileConfig.headers)) {
+            if (!csvfileConfig) {
                 return resolve({
                     inValidData: [{ message: 'config headers are required' }],
                     data: []
@@ -99,7 +99,7 @@ class CSV {
                 skipEmptyLines: true,  // ระบุว่าต้องการข้ามแถวที่ไม่มีข้อมูล
                 complete: function (results: any) {
                     const headers = Object.keys(results.data[0]);
-                    const expectedHeaders = csvfileConfig.headers.map(headers => headers.name);
+                    const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
                     if (headers?.length !== expectedHeaders.length || !headers.every((header: string, index: number) => header === expectedHeaders[index])) {
                         return resolve({
                             inValidData: [{ message: `Expected headers ${expectedHeaders.join(', ')}, but got ${headers?.join(', ')}` }],

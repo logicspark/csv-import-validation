@@ -1,0 +1,53 @@
+{
+  "name": "sheet-utilities",
+  "version": "1.0.1-6",
+  "main": "dist/index.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/example.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^18.16.1",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/papaparse": "^5.3.7",
+    "dayjs": "^1.11.7",
+    "debug": "^3.2.7",
+    "exceljs": "^4.3.0",
+    "fast-csv": "^4.3.6",
+    "jszip": "^3.10.1",
+    "lodash": "^4.17.21",
+    "papaparse": "^5.4.1",
+    "readable-stream": "^3.6.2",
+    "tmp": "^0.2.1"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

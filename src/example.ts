@@ -7,13 +7,13 @@ const main = async () => {
   const filePath = 'files/CCTV-exclude_roof.csv';
   const reading =  readFileSync(filePath);
     const CSVConfig: ValidationConfig = [
-      { headerName: 'name', keyName: 'name', type: 'string'},
-      { headerName: 'ip', keyName: 'ip', type: 'string', required: true },
-      { headerName: 'buildingId', keyName: 'buildingId', type: 'number', required: true},
-      { headerName: 'floorId', keyName: 'floorId', type: 'number', required: true },
+      { headerName: 'name', keyName: 'name', type: 'string',required:true},
+      { headerName: 'ip', keyName: 'ip', type: 'string' },
+      { headerName: 'buildingId', keyName: 'buildingId', type: 'number'},
+      { headerName: 'floorId', keyName: 'floorId', type: 'number' },
       { headerName: 'zoneId', keyName: 'zoneId', type: 'string' },
-      { headerName: 'room', keyName: 'room', type: 'string', required: true },
-      { headerName: 'type', keyName: 'type', type: 'string', required: true }
+      { headerName: 'room', keyName: 'room', type: 'string' },
+      { headerName: 'type', keyName: 'type', type: 'string' }
     ]
     const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
     console.log(data);

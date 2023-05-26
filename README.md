@@ -74,24 +74,22 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 
 | key             | Description                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| name|  กำหนดชื่อ Header ในคอลั่มนั้น ในกรณีที่ csv ไม่ตรงกับที่กำหนดจะ ส่งกลับ message error กลับมา |
+| headerName|  กำหนดชื่อ Header ในคอลั่มนั้น ในกรณีที่ csv ไม่ตรงกับที่กำหนดจะ ส่งกลับ message error กลับมา |
 | keyName | กำหนด key ข้อมูลในคอลั่มที่ส่งกลับมา |
 |type | กำหนด type ของ คอลั่มนั้น |
 
 ##### Config example :
 
 ```
-const CSVConfig: ValidatorConfig = {
-      headers: [
-        { name: 'name', keyName: 'name', type: 'string' },
-        { name: 'ip', keyName: 'ip', type: 'string' },
-        { name: 'buildingId', keyName: 'buildingId', type: 'number'},
-        { name: 'floorId', keyName: 'floorId', type: 'number' },
-        { name: 'zoneId', keyName: 'zoneId', type: 'string' },
-        { name: 'room', keyName: 'room', type: 'string' },
-        { name: 'type', keyName: 'type', type: 'string' }
-      ]
-    };
+ const CSVConfig: ValidationConfig = [
+      { headerName: 'name', keyName: 'name', type: 'string'},
+      { headerName: 'ip', keyName: 'ip', type: 'string' },
+      { headerName: 'buildingId', keyName: 'buildingId', type: 'number'},
+      { headerName: 'floorId', keyName: 'floorId', type: 'number' },
+      { headerName: 'zoneId', keyName: 'zoneId', type: 'string' },
+      { headerName: 'room', keyName: 'room', type: 'string' },
+      { headerName: 'type', keyName: 'type', type: 'string' }
+    ]
 ```
 #### readAndFileValidator
 ```

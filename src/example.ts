@@ -4,6 +4,7 @@ import { CsvUtiltiess } from './csv/csv-utiltiess';
 import { readFileSync, createReadStream, readFile } from 'fs'
 import {  ValidationConfig } from './shared/interfaces/csv-file.interfaces';
 const main = async () => {
+  // readBufferAndValidator
   const filePath = 'files/CCTV-exclude_roof.csv';
   const reading =  readFileSync(filePath);
     const CSVConfig: ValidationConfig = [
@@ -18,51 +19,18 @@ const main = async () => {
     const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
     console.log(data);
 
-  // const csvData = await CsvUtiltiess.readFilesMapObjects(filePath,{
-  //     expectedHeaders:[ 'name', 'ip', 'buildingId', 'floorId', 'zoneId', 'room', 'type' ],
-  //     expectedCellType:{
-  //       name:'string',
-  //       ip:'string',
-  //       buildingId:'number'
-  //     }
-  //   })
-  // console.log(csvData);
 
-
-
-  // ascfassfsafsa
-
-  // const CSVConfig: ValidatorConfig = {
-  //   headers: [
-  //     { name: 'name', inputName: 'name', type: 'string', required: true },
-  //     { name: 'ip', inputName: 'ip', type: 'string', required: true },
-  //     { name: 'buildingId', inputName: 'buildingId', type: 'number', required: true},
-  //     { name: 'floorId', inputName: 'floorId', type: 'number', required: true },
-  //     { name: 'zoneId', inputName: 'zoneId', type: 'string' },
-  //     { name: 'room', inputName: 'room', type: 'string', required: true },
-  //     { name: 'type', inputName: 'type', type: 'string', required: true }
-  //   ]
-  // };
-  // const data = await CsvUtiltiess.readAndFileValidator(filePath, CSVConfig);
-  // console.log(data);
-
-  // year,industry_code_ANZSIC,industry_name_ANZSIC,rme_size_grp,variable,value,unit
-
-  // const filePath = 'files/demo.csv';
-  // const reading = readFileSync(filePath);
-  // const CSVConfig: ValidatorConfig = {
-  //   headers: [
-  //     { name: 'year', keyName: 'year', type: 'string', required: true },
-  //     { name: 'industry_code_ANZSIC', keyName: 'industry_code_ANZSIC', type: 'string', required: true },
-  //     { name: 'industry_name_ANZSIC', keyName: 'industry_name_ANZSIC', type: 'string', required: true },
-  //     { name: 'rme_size_grp', keyName: 'rme_size_grp', type: 'string', required: true },
-  //     { name: 'variable', keyName: 'variable', type: 'string' },
-  //     { name: 'value', keyName: 'value', type: 'string', required: true },
-  //     { name: 'unit', keyName: 'unit', type: 'string', required: true }
-  //   ]
-  // };
-  // const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
-  // console.log(data);
+    // const filePath = 'files/CCTV-exclude_roof.csv';
+    // const CSVConfig: ValidationConfig = [
+    //     { headerName: 'name', keyName: 'name', type: 'string', required: true },
+    //     { headerName: 'ip', keyName: 'ip', type: 'string' },
+    //     { headerName: 'buildingId', keyName: 'buildingId', type: 'number' },
+    //     { headerName: 'floorId', keyName: 'floorId', type: 'number' },
+    //     { headerName: 'zoneId', keyName: 'zoneId', type: 'string' },
+    //     { headerName: 'room', keyName: 'room', type: 'string' },
+    //     { headerName: 'type', keyName: 'type', type: 'string' }
+    // ]
+    // const data = await CsvUtiltiess.readAndFileValidator(filePath, CSVConfig);
 }
 
 

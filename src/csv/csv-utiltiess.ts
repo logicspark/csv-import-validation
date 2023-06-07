@@ -4,7 +4,7 @@ import * as path from 'path'
 import { parse } from 'papaparse'
 import { readFileSync } from 'fs'
 import { ValidationConfig } from '../shared/interfaces/csv-file.interfaces';
-import { _csvDataAndValidateFile } from '../validator/csv-file-validator';
+import { _csvDataAndValidateFile, isDissimilarHeader } from '../validator/csv-file-validator';
 import { Readable } from "stream";
 const workbook = new Workbook();
 class CSV {
@@ -63,9 +63,10 @@ class CSV {
             const result = parse(csvString, { header: true });
             const headers = result.meta.fields;
             const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
-            if (headers?.length !== expectedHeaders.length || !headers?.every((header, index) => header === expectedHeaders[index])) {
+            const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+            if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
                 return resolve({
-                    inValidData: [{ message: `Expected headers ${expectedHeaders.join(', ')}, but got ${headers?.join(', ')}` }],
+                    inValidData: [{ message: `Expected headers ${dissimilarHeader.expectedHeaders}, but got ${dissimilarHeader.headers}` }],
                     data: []
                 });
             }
@@ -100,12 +101,14 @@ class CSV {
                 complete: function (results: any) {
                     const headers = Object.keys(results.data[0]);
                     const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
-                    if (headers?.length !== expectedHeaders.length || !headers.every((header: string, index: number) => header === expectedHeaders[index])) {
+                    const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+                    if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
                         return resolve({
-                            inValidData: [{ message: `Expected headers ${expectedHeaders.join(', ')}, but got ${headers?.join(', ')}` }],
+                            inValidData: [{ message: `Expected headers ${dissimilarHeader.expectedHeaders}, but got ${dissimilarHeader.headers}` }],
                             data: []
                         });
                     }
+
                     return resolve(_csvDataAndValidateFile(results.data, csvfileConfig))
                 },
             });

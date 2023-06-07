@@ -1,6 +1,0 @@
-name,ip,buildingId,floorId,zoneId,room,type
-LC-F1-CCTV-01,10.10.100.60,1,1,1,Corridor,Fixed Box
-LC-F1-CCTV-02,10.10.100.61,2,1,010,Reception Hall,Panoramic IR
-LC-F1-CCTV-03,10.10.100.62,2,1,,Outdoor,Outdoor Dome PTZ
-LC-F1-CCTV-04,10.10.100.63,2,1,,Lift,Fixed Dome
-

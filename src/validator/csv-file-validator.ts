@@ -6,8 +6,7 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
         inValidData: [],
         data: []
     };
-  
-    
+
     csvData.forEach(function (row, rowIndex) {
         const columnData: any = {};
         config.forEach(function (column, columnIndex) {
@@ -31,11 +30,18 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
                         : String(valueConfig.headerName + ' is required in ' + ' row / ' + (rowIndex + 1) + ', column' + (columnIndex))
                 });
             }
-            columnData[valueConfig.keyName] = convertType(columnVal ,valueConfig.type);
+            columnData[valueConfig.keyName] = convertType(columnVal, valueConfig.type);
         });
         file.data.push(columnData);
     })
     return file;
+}
+
+export function isDissimilarHeader(expectedHeaders: String[], headers: String[]) {
+    return {
+        expectedHeaders: headers.filter(element => !expectedHeaders.includes(element)),
+        headers: expectedHeaders.filter(element => !headers.includes(element))
+    }
 }
 
 function columnValidateType(columnVal: string, typeColumn: string) {
@@ -69,6 +75,9 @@ function convertType(value: string, type: string) {
         return Boolean(value);
     }
 }
+
+
+
 
 
 

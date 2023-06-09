@@ -136,7 +136,6 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 - output :
 ```
 {
-  inValidData: [],
   data: [
     {
       orderID: 1,
@@ -161,6 +160,28 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
       region: 'Nunavut',
       category: 'Appliances',
       discountRate: 0.58
+    }
+  ]
+}
+```
+- outout (กรณี validation ไม่ผ่านตามที่กำหนด)
+```
+{
+  inValidData: [
+    {
+      rowIndex: 1,
+      columnIndex: 'A',
+      message: "Order ID's type is number."
+    },
+    {
+      rowIndex: 1,
+      columnIndex: 'D',
+      message: "Quantity's type is number."
+    },
+    {
+      rowIndex: 7,
+      columnIndex: 'A',
+      message: "Order ID's type is number."
     }
   ]
 }

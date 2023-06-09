@@ -33,8 +33,8 @@ class CSV {
 
     async readBufferMapArrny(buffer: Buffer) {
         const stream = bufferToStream(buffer);
-        workbook.csv.read(stream).then((worksheet) => {
-            const allData: any = [];
+        const allData: any = [];
+        return workbook.csv.read(stream).then((worksheet) => {
             worksheet = workbook.getWorksheet(1);
             worksheet.eachRow((row, rowNumber) => {
                 const rowData: any = [];
@@ -44,7 +44,6 @@ class CSV {
                 allData.push(rowData);
             });
             return allData;
-
         }).catch((error) => {
             console.error('CSV file is not valid:', error);
         })

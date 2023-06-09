@@ -15,10 +15,10 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
             if (!columnValidateType(columnVal, valueConfig.type)) {
                 file.inValidData.push({
                     rowIndex: rowIndex + 1,
-                    columnIndex: columnIndex,
+                    columnIndex: colNumberToColName(columnIndex + 1),
                     message: isFunction(valueConfig.requiredError)
                         ? valueConfig.requiredError(valueConfig.headerName, rowIndex + 1, columnIndex)
-                        : String(valueConfig.headerName + ` is Type in ${valueConfig.type}  row /` + (rowIndex + 1) + 'column' + (columnIndex))
+                        : `${valueConfig.headerName}'s type is ${valueConfig.type}.`
                 });
             }
             if (valueConfig.required && (isNull(columnVal) || isEmpty(columnVal))) {
@@ -27,7 +27,7 @@ export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig
                     columnIndex: columnIndex,
                     message: isFunction(valueConfig.requiredError)
                         ? valueConfig.requiredError(valueConfig.headerName, rowIndex + 1, columnIndex)
-                        : String(valueConfig.headerName + ' is required in ' + ' row / ' + (rowIndex + 1) + ', column' + (columnIndex))
+                        : String(valueConfig.headerName + ' is required in ' + ' row / ' + (rowIndex + 1) + ', column' + colNumberToColName(columnIndex))
                 });
             }
             columnData[valueConfig.keyName] = convertType(columnVal, valueConfig.type);
@@ -74,6 +74,23 @@ function convertType(value: string, type: string) {
     } else if (type === 'boolean') {
         return Boolean(value);
     }
+}
+
+function colNumberToColName(columnNumber: number) {
+    let columnName: any = [];
+    while (columnNumber > 0) {
+        let rem = columnNumber % 26;
+        if (rem == 0) {
+            columnName.push("Z");
+            columnNumber = Math.floor(columnNumber / 26) - 1;
+        }
+        else // If remainder is non-zero
+        {
+            columnName.push(String.fromCharCode((rem - 1) + 'A'.charCodeAt(0)));
+            columnNumber = Math.floor(columnNumber / 26);
+        }
+    }
+    return columnName.reverse().join("")
 }
 
 

@@ -20,7 +20,6 @@ const main = async () => {
   ]
   const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
   console.log(data);
-
 }
 
 

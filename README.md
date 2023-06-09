@@ -104,6 +104,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 
 ##### Config example :
   - function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ validation
+  
 ```
  const CSVConfig: ValidationConfig = [
       { headerName: 'name', keyName: 'name', type: 'string'},
@@ -130,10 +131,9 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
     { headerName: 'type', keyName: 'type', type: 'string' }
   ];
   const data = await CsvUtiltiess.readBufferAndValidator(buffer, CSVConfig);
-
 ```
 
-output : 
+- output :
 ```
 {
   inValidData: [],

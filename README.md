@@ -56,7 +56,7 @@ pnpm install sheet-utilities
 ```
 
 output :
-```
+``` js
 [
   [
     'Order ID',
@@ -105,7 +105,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 ##### Config example :
   - function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ validation
   
-```
+``` js
  const CSVConfig: ValidationConfig = [
       { headerName: 'name', keyName: 'name', type: 'string'},
       { headerName: 'ip', keyName: 'ip', type: 'string' },
@@ -120,7 +120,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
     const data = await CsvUtiltiess.readAndFileValidator(filePath, CSVConfig);
 ```
   - function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก   Buffer validation
-```
+``` js
    const CSVConfig: ValidationConfig = [
     { headerName: 'name', keyName: 'name', type: 'string'},
     { headerName: 'ip', keyName: 'ip', type: 'string' },
@@ -134,7 +134,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 ```
 
 - output :
-```
+``` json
 {
   data: [
     {
@@ -165,7 +165,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
 }
 ```
 - outout (กรณี validation ไม่ผ่านตามที่กำหนด)
-```
+``` json
 {
   inValidData: [
     {

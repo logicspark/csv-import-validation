@@ -79,7 +79,28 @@ class CSV {
                 quoteChar: '"',  // กำหนดตัว quote
                 skipEmptyLines: true,  // ระบุว่าต้องการข้ามแถวที่ไม่มีข้อมูล
                 complete: function (results) {
-                    return resolve(_csvDataAndValidateFile(results.data, csvfileConfig))
+                    const headers = Object.keys(results.data[0]);
+                    const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
+                    const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+                    if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
+                        let messageError = "Incorrect header names:";
+                        dissimilarHeader.headers.forEach((element, index) => {
+                            messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
+                        });
+                        messageError = messageError.slice(0, -1);
+                        return resolve({
+                            inValidData: [{ message: messageError }],
+                        });
+                    }
+                    const resultValidate = _csvDataAndValidateFile(results.data, csvfileConfig);
+                    if (resultValidate.inValidData.length) {
+                        return resolve({
+                            inValidData: resultValidate.inValidData
+                        });
+                    }
+                    return resolve({
+                        data: resultValidate.data
+                    });
                 },
             });
         });
@@ -122,10 +143,10 @@ class CSV {
                     return resolve({
                         data: resultValidate.data
                     });
-                    // return resolve(_csvDataAndValidateFile(results.data, csvfileConfig))
+
                 },
             });
         });
     }
 }
-export const CsvUtiltiess = new CSV();
+export const CsvUtilties = new CSV();

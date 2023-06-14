@@ -1,10 +1,10 @@
 
 
-import { CsvUtiltiess } from './csv/csv-utiltiess';
-import { readFileSync, createReadStream, readFile } from 'fs'
+import { CsvUtilties } from './csv/csv-utiltiess';
+import { readFileSync } from 'fs'
 import { ValidationConfig } from './shared/interfaces/csv-file.interfaces';
 const main = async () => {
-  const filePath = 'files/example.csv';
+  const filePath = 'example-files/example-header.csv';
   const reading = readFileSync(filePath);
   const CSVConfig: ValidationConfig = [
     { headerName: 'Order ID', keyName: 'orderID', type: 'number' },
@@ -18,7 +18,7 @@ const main = async () => {
     { headerName: 'Category', keyName: 'category', type: 'string' },
     { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
   ]
-  const data = await CsvUtiltiess.readBufferAndValidator(reading, CSVConfig);
+  const data = await CsvUtilties.readBufferAndValidator(reading, CSVConfig);
   console.log(data);
 }
 

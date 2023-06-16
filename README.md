@@ -1,38 +1,40 @@
-# sheet-utilities-ts
+# csv-import-validation
 
 ## About
-sheet-utilities-ts สร้างขึ้นมาเพื่อที่ การตรวจสอบความถูกต้องของไฟล์ CSV กับสคีมาที่กำหนดโดยผู้ใช้ (ส่งคืนออบเจกต์กลับพร้อมข้อมูลและข้อความที่ไม่ถูกต้อง)
-
-
+csv-import-validation สร้างขึ้นมาเพื่อที่ การตรวจสอบความถูกต้องของไฟล์ CSV กับสคีมาที่กำหนดโดยผู้ใช้ (ส่งคืนออบเจกต์กลับพร้อมข้อมูลและข้อความที่ไม่ถูกต้อง)
+### Node Version ที่รองรับ
+```
+=> 14.21.0 
+```
 ## Installation
 
-ตัวอย่างการติดตั้ง ตัว sheet-utilities-ts ให้ทำตามขั้นตอนง่ายๆดังนี้โดยใช้ npm or yarn or pnpm และวิธีการ import module sheet-utilities-ts
+ตัวอย่างการติดตั้ง ตัว csv-import-validation ให้ทำตามขั้นตอนง่ายๆดังนี้โดยใช้ npm or yarn or pnpm และวิธีการ import module csv-import-validation
 
 npm install
 
 ```bash
-npm install sheet-utilities
+npm install csv-import-validation
 ```
 
 Or yarn
 
 ```bash
-yarn add sheet-utilities
+yarn add csv-import-validation
 ```
 
 Or pnpm
 
 ```bash
-pnpm install sheet-utilities
+pnpm install csv-import-validation
 ```
 
 
 ## Importing ⬆
+``` js
+  import { CsvUtiltiess } from "@logicspark/csv-import-validation";
 ```
-  import { CsvUtiltiess } from "@logicspark/sheet-utilities-ts";
-```
-
-
+ 
+[โปรดดูการสาธิตสำหรับรายละเอียดเพิ่มเติม](https://github.com/logicspark/csv-import-validation/tree/main/demo)
 
 ## Summarize
 อาเรย์

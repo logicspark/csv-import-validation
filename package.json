@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/example.js"
+    "start": "npm run build  && node dist/index.js"
   },
   "keywords": [],
   "author": "",

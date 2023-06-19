@@ -1,6 +1,6 @@
 {
   "name": "csv-import-validation",
-  "version": "1.0.1-14",
+  "version": "1.0.1-15",
   "main": "dist/index.js",
   "description": "",
   "scripts": {

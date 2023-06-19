@@ -50,9 +50,9 @@ class CSV {
     }
 
 
-    readAndFileValidator(csvFilePath: string, csvfileConfig: ValidationConfig) {
+    readAndFileValidator(csvFilePath: string, csvFileConfig: ValidationConfig) {
         return new Promise(function (resolve, reject) {
-            if (!csvfileConfig) {
+            if (!csvFileConfig) {
                 return resolve({
                     inValidData: [{ message: 'config headers are required' }]
                 });
@@ -60,7 +60,7 @@ class CSV {
             const csvString = readFileSync(csvFilePath, 'utf-8');
             const result = parse(csvString, { header: true });
             const headers = result.meta.fields;
-            const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
+            const expectedHeaders = csvFileConfig.map(headers => headers.headerName);
             const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
             if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
                 let messageError = "Incorrect header names:";
@@ -80,7 +80,7 @@ class CSV {
                 skipEmptyLines: true, 
                 complete: function (results) {
                     const headers = Object.keys(results.data[0]);
-                    const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
+                    const expectedHeaders = csvFileConfig.map(headers => headers.headerName);
                     const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
                     if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
                         let messageError = "Incorrect header names:";
@@ -92,7 +92,7 @@ class CSV {
                             inValidData: [{ message: messageError }],
                         });
                     }
-                    const resultValidate = _csvDataAndValidateFile(results.data, csvfileConfig);
+                    const resultValidate = _csvDataAndValidateFile(results.data, csvFileConfig);
                     if (resultValidate.inValidData.length) {
                         return resolve({
                             inValidData: resultValidate.inValidData
@@ -106,9 +106,9 @@ class CSV {
         });
     }
 
-    readBufferAndValidator(buffer: Buffer, csvfileConfig: ValidationConfig) {
+    readBufferAndValidator(buffer: Buffer, csvFileConfig: ValidationConfig) {
         return new Promise(async function (resolve, reject) {
-            if (!csvfileConfig) {
+            if (!csvFileConfig) {
                 return resolve({
                     inValidData: [{ message: 'config headers are required' }]
                 });
@@ -122,7 +122,7 @@ class CSV {
                 skipEmptyLines: true,  
                 complete: function (results: any) {
                     const headers = Object.keys(results.data[0]);
-                    const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
+                    const expectedHeaders = csvFileConfig.map(headers => headers.headerName);
                     const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
                     if (dissimilarHeader.headers.length || dissimilarHeader.expectedHeaders.length) {
                         let messageError = "Incorrect header names:";
@@ -134,7 +134,7 @@ class CSV {
                             inValidData: [{ message: messageError }],
                         });
                     }
-                    const resultValidate = _csvDataAndValidateFile(results.data, csvfileConfig);
+                    const resultValidate = _csvDataAndValidateFile(results.data, csvFileConfig);
                     if (resultValidate.inValidData.length) {
                         return resolve({
                             inValidData: resultValidate.inValidData

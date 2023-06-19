@@ -1,6 +1,6 @@
 // csv-utiltiess.test.ts
 import { readFileSync } from 'fs'
-import { CsvUtilties } from "../src/csv/csv-utiltiess";
+import { CsvUtilities } from "../src/csv/csv-utilities";
 import { ValidationConfig } from "../src/shared/interfaces/csv-file.interfaces";
 
 const expectedData = {
@@ -250,7 +250,7 @@ const expectedDataArry = [
 ];
 
 
-describe("test CsvUtiltiess", () => {
+describe("test CsvUtilitiess", () => {
     it("readBufferAndValidator Should return Object Data and InValidData", async () => {
         const filePath = 'example-files/example-header.csv';
         const reading = readFileSync(filePath);
@@ -266,7 +266,7 @@ describe("test CsvUtiltiess", () => {
             { headerName: 'Category', keyName: 'category', type: 'string' },
             { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
         ]
-        const data = await CsvUtilties.readBufferAndValidator(reading, CSVConfig);
+        const data = await CsvUtilities.readBufferAndValidator(reading, CSVConfig);
         expect(data).toEqual(expectedData);
     });
 
@@ -284,21 +284,21 @@ describe("test CsvUtiltiess", () => {
             { headerName: 'Category', keyName: 'category', type: 'string' },
             { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
         ]
-        const data = await CsvUtilties.readAndFileValidator(filePath, CSVConfig);
+        const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
         expect(data).toEqual(expectedData);
     });
 
 
     it("readFileCSvPart Should return array", async () => {
         const filePath = 'example-files/example.csv';
-        const dataArry = await CsvUtilties.readCsvFileMapArrny(filePath);
+        const dataArry = await CsvUtilities.readCsvFileMapArray(filePath);
         expect(dataArry).toEqual(expectedDataArry);
     });
 
     it("readFileCSvBuffer Should return array", async () => {
         const filePath = 'example-files/example.csv';
         const reading = readFileSync(filePath);
-        const dataArry = await CsvUtilties.readBufferMapArrny(reading);
+        const dataArry = await CsvUtilities.readBufferMapArray(reading);
         expect(dataArry).toEqual(expectedDataArry);
     });
 });

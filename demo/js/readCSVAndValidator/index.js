@@ -1,26 +1,6 @@
-// import { CsvUtilties, ValidationConfig } from "csv-import-validation";
-// import { readFileSync } from 'fs'
-// const main = async () => {
-//     const filePath = "demo.csv";
-//     const reading = readFileSync(filePath);
-//     const CSVConfig: ValidationConfig = [
-//         { headerName: 'Order ID', keyName: 'orderID', type: 'number' },
-//         { headerName: 'Product Name', keyName: 'productName', type: 'string' },
-//         { headerName: 'Customer Name', keyName: 'customerName', type: 'string' },
-//         { headerName: 'Quantity', keyName: 'quantity', type: 'number' },
-//         { headerName: 'Price', keyName: 'price', type: 'number' },
-//         { headerName: 'Discount', keyName: 'discount', type: 'number' },
-//         { headerName: 'Total', keyName: 'total', type: 'string' },
-//         { headerName: 'Region', keyName: 'region', type: 'string' },
-//         { headerName: 'Category', keyName: 'category', type: 'string' },
-//         { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
-//     ]
-//     const data = await CsvUtilties.readBufferAndValidator(reading, CSVConfig);
-//     console.log(data);
-// }
-// main();
 
-const CsvUtilties = require("csv-import-validation").CsvUtilties;
+
+const CsvUtilities = require("csv-import-validation").CsvUtilities;
 const main = async () => {
   const filePath = "demo.csv";
   const CSVConfig = [
@@ -35,7 +15,7 @@ const main = async () => {
     { headerName: "Category", keyName: "category", type: "string" },
     { headerName: "Discount Rate", keyName: "discountRate", type: "number" },
   ];
-  const data = await CsvUtilties.readAndFileValidator(filePath, CSVConfig);
+  const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
   console.log(data);
 };
 main();

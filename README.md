@@ -5,9 +5,9 @@
   
 </div>
 
-<p align=center> Validation library when importing various CSV files. Easy to use and customize. Developed by <a href="https://logicspark.com">Logic Spark</a> team. </p>
+<p align=center> Validation library for CSV files. Easy to use and customize. Developed by <a href="https://logicspark.com">Logic Spark</a> team. </p>
 
-<p align=center> The function to read data from a CSV file is from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>. </p>
+<p align=center> CSV import validation is a `Typescript` library that is utilize the function to read CSV data from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>.</p>
 <br>
 
 ## About
@@ -29,27 +29,35 @@ csv-import-validation สร้างขึ้นมาเพื่อที่ 
 - [![Node][node.js]][node-url]
 - [![exceljs][exceljs.js]][exceljs-url]
 
-## Installation
+## Getting Started
+
+### Prerequisite
+
+### Installation
 
 ตัวอย่างการติดตั้ง ตัว csv-import-validation ให้ทำตามขั้นตอนง่ายๆดังนี้โดยใช้ npm or yarn or pnpm และวิธีการ import module csv-import-validation
 
 npm install
 
-```bash
+```sh
 npm install csv-import-validation
 ```
 
+#### Other options
+
 Or yarn
 
-```bash
+```sh
 yarn add csv-import-validation
 ```
 
 Or pnpm
 
-```bash
+```sh
 pnpm install csv-import-validation
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)
 
 ## Importing ⬆
 

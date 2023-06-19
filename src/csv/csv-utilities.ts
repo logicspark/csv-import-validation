@@ -8,7 +8,7 @@ import { _csvDataAndValidateFile, isDissimilarHeader } from '../validator/csv-fi
 import { Readable } from "stream";
 const workbook = new Workbook();
 class CSV {
-    readCsvFileMapArrny(csvFilePath: string) {
+    readCsvFileMapArray(csvFilePath: string) {
         const extname = path.extname(csvFilePath);
         if (extname !== '.csv') {
             throw new Error('File is not a CSV');
@@ -31,7 +31,7 @@ class CSV {
             });
     }
 
-    async readBufferMapArrny(buffer: Buffer) {
+    async readBufferMapArray(buffer: Buffer) {
         const stream = bufferToStream(buffer);
         const allData: any = [];
         return workbook.csv.read(stream).then((worksheet) => {
@@ -73,11 +73,11 @@ class CSV {
                 });
             }
             parse(csvString, {
-                header: true,  // ระบุว่าไม่มี header
-                delimiter: ',',  // กำหนดตัวคั่นคอลัมน์
-                newline: '\n',  // กำหนดตัวขึ้นบรรทัดใหม่
-                quoteChar: '"',  // กำหนดตัว quote
-                skipEmptyLines: true,  // ระบุว่าต้องการข้ามแถวที่ไม่มีข้อมูล
+                header: true,  
+                delimiter: ',', 
+                newline: '\n', 
+                quoteChar: '"',  
+                skipEmptyLines: true, 
                 complete: function (results) {
                     const headers = Object.keys(results.data[0]);
                     const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
@@ -115,11 +115,11 @@ class CSV {
             }
             const stream = Readable.from(buffer);
             parse(stream, {
-                header: true,  // ระบุว่าไม่มี header
-                delimiter: ',',  // กำหนดตัวคั่นคอลัมน์
-                newline: '\n',  // กำหนดตัวขึ้นบรรทัดใหม่
-                quoteChar: '"',  // กำหนดตัว quote
-                skipEmptyLines: true,  // ระบุว่าต้องการข้ามแถวที่ไม่มีข้อมูล
+                header: true,  
+                delimiter: ',', 
+                newline: '\n',  
+                quoteChar: '"', 
+                skipEmptyLines: true,  
                 complete: function (results: any) {
                     const headers = Object.keys(results.data[0]);
                     const expectedHeaders = csvfileConfig.map(headers => headers.headerName);
@@ -149,4 +149,4 @@ class CSV {
         });
     }
 }
-export const CsvUtilties = new CSV();
+export const CsvUtilities = new CSV();

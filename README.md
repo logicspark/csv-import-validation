@@ -1,13 +1,28 @@
 # csv-import-validation
 
+[javascript]:https://img.shields.io/badge/javascript-F0DB4F?style=for-the-badge&logo=javascript&logoColor=323330
+[TypeScript]: https://img.shields.io/badge/typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
+[node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[node-url]: https://nodejs.org/en
+
+[exceljs.js]: https://img.shields.io/badge/sharp-exceljs-red
+[exceljs-url]: https://www.npmjs.com/package/csv-file-validator?activeTab=readme
+
 ## About
 csv-import-validation สร้างขึ้นมาเพื่อที่ การตรวจสอบความถูกต้องของไฟล์ CSV กับสคีมาที่กำหนดโดยผู้ใช้ (ส่งคืนออบเจกต์กลับพร้อมข้อมูลและข้อความที่ไม่ถูกต้อง)
 ### Node Version ที่รองรับ
 ```
 => 14.21.0 
 ```
-## Installation
+## building_construction: Built With
+นี่คือรายการของไลบรารี่ที่ใช้ในการพัฒนา csv-import-validation
+- [![Typescript][typescript]][typescript-url]
+- ![javascript][javascript]
+- [![Node][node.js]][node-url]
+- [![exceljs][exceljs.js]][exceljs-url]
 
+## Installation
 ตัวอย่างการติดตั้ง ตัว csv-import-validation ให้ทำตามขั้นตอนง่ายๆดังนี้โดยใช้ npm or yarn or pnpm และวิธีการ import module csv-import-validation
 
 npm install
@@ -31,7 +46,7 @@ pnpm install csv-import-validation
 
 ## Importing ⬆
 ``` js
-  import { CsvUtiltiess } from "@logicspark/csv-import-validation";
+  import { CsvUtilities } from "@logicspark/csv-import-validation";
 ```
  
 [โปรดดูการสาธิตสำหรับรายละเอียดเพิ่มเติม](https://github.com/logicspark/csv-import-validation/tree/main/demo)
@@ -119,7 +134,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
     ]
 
     const filePath = 'files/CCTV-exclude_roof.csv';
-    const data = await CsvUtiltiess.readAndFileValidator(filePath, CSVConfig);
+    const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
 ```
   - function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก   Buffer validation
 ``` js
@@ -132,7 +147,7 @@ header - ประเภท: อาร์เรย์ ส่วนหัวข�
     { headerName: 'room', keyName: 'room', type: 'string' },
     { headerName: 'type', keyName: 'type', type: 'string' }
   ];
-  const data = await CsvUtiltiess.readBufferAndValidator(buffer, CSVConfig);
+  const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 ```
 
 - output :

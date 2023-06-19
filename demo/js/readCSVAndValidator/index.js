@@ -1,6 +1,6 @@
 
 
-const CsvUtilities = require("csv-import-validation").CsvUtilities;
+const  CsvUtilities = require('csv-import-validation').CsvUtilities;
 const main = async () => {
   const filePath = "demo.csv";
   const CSVConfig = [

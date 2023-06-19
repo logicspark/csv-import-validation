@@ -1,4 +1,4 @@
-import { CsvUtilties, ValidationConfig } from "csv-import-validation";
+import { CsvUtilities, ValidationConfig } from "csv-import-validation";
 import { readFileSync } from 'fs'
 const main = async () => {
     const filePath = "demo.csv";
@@ -15,7 +15,7 @@ const main = async () => {
         { headerName: 'Category', keyName: 'category', type: 'string' },
         { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
     ]
-    const data = await CsvUtilties.readBufferAndValidator(reading, CSVConfig);
+    const data = await CsvUtilities.readBufferAndValidator(reading, CSVConfig);
     console.log(data);
 }
 main();

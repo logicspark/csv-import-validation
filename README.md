@@ -7,7 +7,7 @@
 
 <p align=center> Validation library for CSV files. Easy to use and customize. Developed by <a href="https://logicspark.com">Logic Spark</a> team. </p>
 
-<p align=center> CSV import validation is a `Typescript` library that is utilize the function to read CSV data from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>.</p>
+<p align=center> CSV import validation is a Typescript library that is utilize the function to read CSV data from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>.</p>
 <br>
 
 ## About

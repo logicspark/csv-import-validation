@@ -7,7 +7,7 @@
 
 <p align=center> Validation library when importing various CSV files. Easy to use and customize. Developed by <a href="https://logicspark.com">Logic Spark</a> team. </p>
 
-<p align=center> The function for reading is built on top of <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>. </p>
+<p align=center> The function to read data from a CSV file is from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>. </p>
 <br>
 
 ## About

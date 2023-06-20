@@ -10,7 +10,17 @@
 <p align=center> CSV import validation is a Typescript library that is utilize the function to read CSV data from <a href="https://github.com/exceljs/exceljs">ExcelJS<a/>.</p>
 <br>
 
-## building_construction: Built With
+<div align="center">
+  <a href="#building_construction-built-with">Built With</a> - 
+  <a href="#rocket-getting-started">Getting Started</a> - 
+  <a href="#fire-usage">Usage</a> -
+  <a href="#books-license">License</a> -
+  <a href="#pray-acknowledgement">Acknowledgement</a>
+</div>
+
+<br>
+
+## :building_construction: Built With
 
 Here is a list of frameworks/libraries used to develop CSV Import Validation
 
@@ -19,7 +29,7 @@ Here is a list of frameworks/libraries used to develop CSV Import Validation
 - [![Node][node.js]][node-url]
 - [![exceljs][exceljs.js]][exceljs-url]
 
-## Getting Started
+## :rocket: Getting Started
 
 CSV Import Validation library checks data validation for CSV files against defined schema and returns data and validation messages as an object. In this guide, you will learn what is required before using the library and how to install it quickly. Let's get started!
 
@@ -61,15 +71,7 @@ pnpm install csv-import-validation
 
 <p align="right">(<a href="#readme-top">back to top</a>)
 
-## Importing ⬆
-
-```js
-import { CsvUtilities } from "@logicspark/csv-import-validation";
-```
-
-[โปรดดูการสาธิตสำหรับรายละเอียดเพิ่มเติม](https://github.com/logicspark/csv-import-validation/tree/main/demo)
-
-## Summarize
+## :fire: Usage
 
 อาเรย์
 
@@ -80,6 +82,12 @@ import { CsvUtilities } from "@logicspark/csv-import-validation";
 - การตรวจสอบไฟล์ CSV กับคีย์ที่กำหนดโดย(ส่งคืนวัตถุที่มีข้อมูลและข้อความที่ไม่ถูกต้อง)
 - ตรวจสอบความถูกต้อง Header
 - ตรวจสอบความถูกต้อง type ของคอลั่ม
+
+[โปรดดูการสาธิตสำหรับรายละเอียดเพิ่มเติม](https://github.com/logicspark/csv-import-validation/tree/main/demo)
+
+```js
+import { CsvUtilities } from "@logicspark/csv-import-validation";
+```
 
 ### Function Read File CSV Return Array
 
@@ -179,7 +187,7 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 
 - output :
 
-```json
+```js
 {
   "data": [
     {
@@ -212,7 +220,7 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 
 - outout (กรณี validation ไม่ผ่านตามที่กำหนด)
 
-```json
+```js
 {
   "inValidData": [
     {
@@ -233,6 +241,18 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
   ]
 }
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)
+
+## :books: License
+
+Distributed under the MIT license. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)
+
+## :pray: Acknowledgement
+
+<p align="right">(<a href="#readme-top">back to top</a>)
 
 [javascript]: https://img.shields.io/badge/javascript-F0DB4F?style=for-the-badge&logo=javascript&logoColor=323330
 [TypeScript]: https://img.shields.io/badge/typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white

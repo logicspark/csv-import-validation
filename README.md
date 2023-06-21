@@ -73,30 +73,35 @@ pnpm install csv-import-validation
 
 ## :fire: Usage
 
-There are 2 main functions in the library. One reads CSV and returns an array while another reads CSV and returns as objects with validation messages. For each function, it can be read via a file path or buffer. The functions are independent and do not need to be called in sequence.
+There are 2 main features in the library. One reads CSV and returns an array while another reads CSV and returns as objects with validation messages. For each feature, it can be read via a file path or buffer. The functions are independent and do not need to be called in sequence.
 
-To use the function, you will need to `import` to your targeted file
+To use the library, you will need to `import` to your targeted file
 
 ```js
 import { CsvUtilities } from "@logicspark/csv-import-validation";
 ```
 
-### Function Read File Return Array
+### Functions that read CSV and return an array
 
-- function readFileMapArray มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV
+There are two functions, namely:
 
-```
+- function readFileMapArray: read CSV by specifying a file path to the CSV file
+- function readBufferMapArray: read CSV from Buffer
+
+```js
+  function readFileMapArray
   const filePath = 'files/CCTV-exclude_roof.csv';
   const reading =  readCsvFileMapArray(filePath);
 ```
 
-- function readBufferMapArray มีหน้าอ่านข้อมูล CSV จาก Buffer
+- function
 
-```
-     const reading = readBufferMapArray(ฺbuffer);
+```js
+  function readBufferMapArray
+  const reading = readBufferMapArray(ฺbuffer);
 ```
 
-output :
+Each function has the same output as below:
 
 ```js
 [
@@ -127,31 +132,15 @@ output :
 ];
 ```
 
-### Function Read File CSV Return Objects and Validator
+### Functions that read CSV and return objects and validations
 
-- readFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ Validator
-- readBufferValidator มีหน้าอ่านข้อมูล CSV จาก Buffer ที่อยู่ของไฟล์ CSV และทำการ Validator
+There are two functions, namely:
 
-ออบเจ็ค
+- readFileValidator: read CSV by specifying a file path to the CSV file and validate data
+- readBufferValidator read CSV from Buffer and validate data
+  The validation can be applied to the header name and data type of each column.
 
-- การตรวจสอบไฟล์ CSV กับคีย์ที่กำหนดโดย(ส่งคืนวัตถุที่มีข้อมูลและข้อความที่ไม่ถูกต้อง)
-- ตรวจสอบความถูกต้อง Header
-- ตรวจสอบความถูกต้อง type ของคอลั่ม
-
-#### Configuration
-
-กำหนดค่าควรมี:
-header - ประเภท: อาร์เรย์ ส่วนหัวของแถว
-
-| key        | Description                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------- |
-| headerName | กำหนดชื่อ Header ในคอลั่มนั้น ในกรณีที่ csv ไม่ตรงกับที่กำหนดจะ ส่งกลับ message error กลับมา |
-| keyName    | กำหนด key ข้อมูลในคอลั่มที่ส่งกลับมา                                                         |
-| type       | กำหนด type ของ คอลั่มนั้น (number , string)                                                  |
-
-##### Config example :
-
-- function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ validation
+_If you import with validation, data will only be imported if there is no validation message._
 
 ```js
 const CSVConfig: ValidationConfig = [
@@ -164,11 +153,9 @@ const CSVConfig: ValidationConfig = [
   { headerName: "type", keyName: "type", type: "string" },
 ];
 
-const filePath = "files/CCTV-exclude_roof.csv";
+const filePath = "files/your-csv-file-name.csv";
 const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
 ```
-
-- function readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก Buffer validation
 
 ```js
 const CSVConfig: ValidationConfig = [
@@ -183,7 +170,17 @@ const CSVConfig: ValidationConfig = [
 const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 ```
 
-- output :
+#### Configuration Parameters
+
+header - ประเภท: อาร์เรย์ ส่วนหัวของแถว
+
+| Parameter    | Description                                                   |
+| ------------ | ------------------------------------------------------------- |
+| `headerName` | Specify header name of each column to validate with a message |
+| `keyName`    | Specify key to map data of the corresponding column           |
+| `type`       | Specify data type of each column (`number`, `string`)         |
+
+Each function has the same output. If there is no validation message, the output will return objects of data imported.
 
 ```js
 {
@@ -216,7 +213,7 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 }
 ```
 
-- outout (กรณี validation ไม่ผ่านตามที่กำหนด)
+If there is validation, the data will not be imported and the output will return locations that need to be fixed before importing again.
 
 ```js
 {
@@ -251,6 +248,9 @@ Distributed under the MIT license. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)
 
 ## :pray: Acknowledgement
+
+- [Img Shields](https://shields.io)
+- [ExcelJS](https://github.com/exceljs/exceljs)
 
 <p align="right">(<a href="#readme-top">back to top</a>)
 

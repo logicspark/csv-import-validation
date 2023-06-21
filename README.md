@@ -73,35 +73,27 @@ pnpm install csv-import-validation
 
 ## :fire: Usage
 
-อาเรย์
+There are 2 main functions in the library. One reads CSV and returns an array while another reads CSV and returns as objects with validation messages. For each function, it can be read via a file path or buffer. The functions are independent and do not need to be called in sequence.
 
-- การอ่านไฟล์ csv โดยตรงส่งค่าคืนเป็น อาร์เรย์
-
-ออบเจ็ค
-
-- การตรวจสอบไฟล์ CSV กับคีย์ที่กำหนดโดย(ส่งคืนวัตถุที่มีข้อมูลและข้อความที่ไม่ถูกต้อง)
-- ตรวจสอบความถูกต้อง Header
-- ตรวจสอบความถูกต้อง type ของคอลั่ม
-
-[โปรดดูการสาธิตสำหรับรายละเอียดเพิ่มเติม](https://github.com/logicspark/csv-import-validation/tree/main/demo)
+To use the function, you will need to `import` to your targeted file
 
 ```js
 import { CsvUtilities } from "@logicspark/csv-import-validation";
 ```
 
-### Function Read File CSV Return Array
+### Function Read File Return Array
 
-- function readCsvFileMapArrny มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV
+- function readFileMapArray มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV
 
 ```
   const filePath = 'files/CCTV-exclude_roof.csv';
-  const reading =  readCsvFileMapArrny(filePath);
+  const reading =  readCsvFileMapArray(filePath);
 ```
 
-- function readBufferMapArrny มีหน้าอ่านข้อมูล CSV จาก Buffer
+- function readBufferMapArray มีหน้าอ่านข้อมูล CSV จาก Buffer
 
 ```
-     const reading = readBufferMapArrny(ฺbuffer);
+     const reading = readBufferMapArray(ฺbuffer);
 ```
 
 output :
@@ -137,8 +129,14 @@ output :
 
 ### Function Read File CSV Return Objects and Validator
 
-- readAndFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ Validator
-- readBufferAndValidator มีหน้าอ่านข้อมูล CSV จาก Buffer ที่อยู่ของไฟล์ CSV และทำการ Validator
+- readFileValidator มีหน้าอ่านข้อมูล CSV จาก FilePath ที่อยู่ของไฟล์ CSV และทำการ Validator
+- readBufferValidator มีหน้าอ่านข้อมูล CSV จาก Buffer ที่อยู่ของไฟล์ CSV และทำการ Validator
+
+ออบเจ็ค
+
+- การตรวจสอบไฟล์ CSV กับคีย์ที่กำหนดโดย(ส่งคืนวัตถุที่มีข้อมูลและข้อความที่ไม่ถูกต้อง)
+- ตรวจสอบความถูกต้อง Header
+- ตรวจสอบความถูกต้อง type ของคอลั่ม
 
 #### Configuration
 
@@ -241,6 +239,8 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
   ]
 }
 ```
+
+For more details, please see our [demo](https://github.com/logicspark/csv-import-validation/tree/main/demo) folder. There are demos for both JavaScript and TypeScript. In the [example-files](https://github.com/logicspark/csv-import-validation/tree/main/example-files) folder, we provide a csv file with and without header for your ease of use.
 
 <p align="right">(<a href="#readme-top">back to top</a>)
 

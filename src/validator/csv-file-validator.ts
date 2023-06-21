@@ -1,7 +1,7 @@
 
 import { ValidationConfig, ParsedResults, RowError } from '../../src/shared/interfaces/csv-file.interfaces';
 import { isEmpty, isString, isFunction, isNumber, isNull } from "lodash";
-export function _csvDataAndValidateFile(csvData: any[], config: ValidationConfig) {
+export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
     const file: ParsedResults = {
         inValidData: [],
         data: []

@@ -90,13 +90,11 @@ There are two functions, namely:
 - function readBufferMapArray: read CSV from Buffer
 
 ```js
-  function readFileMapArray
-  const filePath = 'files/CCTV-exclude_roof.csv';
+  const filePath = "files/your-csv-file-name.csv";
   const reading =  readCsvFileMapArray(filePath);
 ```
 
 ```js
-  function readBufferMapArray
   const reading = readBufferMapArray(ฺbuffer);
 ```
 
@@ -258,7 +256,7 @@ Distributed under the MIT license. See `LICENSE.txt` for more information.
 [typescript-url]: https://www.typescriptlang.org/
 [node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
 [node-url]: https://nodejs.org/en
-[exceljs.js]: https://img.shields.io/badge/sharp-exceljs-red
+[exceljs.js]: https://img.shields.io/badge/exceljs-red
 [exceljs-url]: https://github.com/exceljs/exceljs
 [Jest]: https://img.shields.io/badge/jest-C32C28?style=for-the-badge&logo=jest&logoColor=white
 [jest-url]: https://jestjs.io/

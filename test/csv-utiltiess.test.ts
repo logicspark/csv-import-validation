@@ -266,7 +266,7 @@ describe("test CsvUtilitiess", () => {
             { headerName: 'Category', keyName: 'category', type: 'string' },
             { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
         ]
-        const data = await CsvUtilities.readBufferAndValidator(reading, CSVConfig);
+        const data = await CsvUtilities.readBufferValidator(reading, CSVConfig);
         expect(data).toEqual(expectedData);
     });
 
@@ -284,7 +284,7 @@ describe("test CsvUtilitiess", () => {
             { headerName: 'Category', keyName: 'category', type: 'string' },
             { headerName: 'Discount Rate', keyName: 'discountRate', type: 'number' }
         ]
-        const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
+        const data = await CsvUtilities.readFileValidator(filePath, CSVConfig);
         expect(data).toEqual(expectedData);
     });
 

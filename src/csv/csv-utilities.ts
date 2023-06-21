@@ -4,7 +4,7 @@ import * as path from 'path'
 import { parse } from 'papaparse'
 import { readFileSync } from 'fs'
 import { ValidationConfig } from '../shared/interfaces/csv-file.interfaces';
-import { _csvDataAndValidateFile, isDissimilarHeader } from '../validator/csv-file-validator';
+import { _csvDataValidateFile, isDissimilarHeader } from '../validator/csv-file-validator';
 import { Readable } from "stream";
 const workbook = new Workbook();
 class CSV {
@@ -50,7 +50,7 @@ class CSV {
     }
 
 
-    readAndFileValidator(csvFilePath: string, csvFileConfig: ValidationConfig) {
+    readFileValidator(csvFilePath: string, csvFileConfig: ValidationConfig) {
         return new Promise(function (resolve, reject) {
             if (!csvFileConfig) {
                 return resolve({
@@ -92,7 +92,7 @@ class CSV {
                             inValidData: [{ message: messageError }],
                         });
                     }
-                    const resultValidate = _csvDataAndValidateFile(results.data, csvFileConfig);
+                    const resultValidate = _csvDataValidateFile(results.data, csvFileConfig);
                     if (resultValidate.inValidData.length) {
                         return resolve({
                             inValidData: resultValidate.inValidData
@@ -106,7 +106,7 @@ class CSV {
         });
     }
 
-    readBufferAndValidator(buffer: Buffer, csvFileConfig: ValidationConfig) {
+    readBufferValidator(buffer: Buffer, csvFileConfig: ValidationConfig) {
         return new Promise(async function (resolve, reject) {
             if (!csvFileConfig) {
                 return resolve({
@@ -134,7 +134,7 @@ class CSV {
                             inValidData: [{ message: messageError }],
                         });
                     }
-                    const resultValidate = _csvDataAndValidateFile(results.data, csvFileConfig);
+                    const resultValidate = _csvDataValidateFile(results.data, csvFileConfig);
                     if (resultValidate.inValidData.length) {
                         return resolve({
                             inValidData: resultValidate.inValidData

@@ -15,7 +15,7 @@ const main = async () => {
     { headerName: "Category", keyName: "category", type: "string" },
     { headerName: "Discount Rate", keyName: "discountRate", type: "number" },
   ];
-  const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
+  const data = await CsvUtilities.readFileValidator(filePath, CSVConfig);
   console.log(data);
 };
 main();

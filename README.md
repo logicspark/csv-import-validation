@@ -28,6 +28,7 @@ Here is a list of frameworks/libraries used to develop CSV Import Validation
 - ![javascript][javascript]
 - [![Node][node.js]][node-url]
 - [![exceljs][exceljs.js]][exceljs-url]
+- [![Jest][Jest]][jest-url]
 
 ## :rocket: Getting Started
 
@@ -261,3 +262,5 @@ Distributed under the MIT license. See `LICENSE.txt` for more information.
 [node-url]: https://nodejs.org/en
 [exceljs.js]: https://img.shields.io/badge/sharp-exceljs-red
 [exceljs-url]: https://github.com/exceljs/exceljs
+[Jest]: https://img.shields.io/badge/jest-C32C28?style=for-the-badge&logo=jest&logoColor=white
+[jest-url]: https://jestjs.io/

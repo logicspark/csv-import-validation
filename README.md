@@ -95,8 +95,6 @@ There are two functions, namely:
   const reading =  readCsvFileMapArray(filePath);
 ```
 
-- function
-
 ```js
   function readBufferMapArray
   const reading = readBufferMapArray(ฺbuffer);
@@ -173,8 +171,6 @@ const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
 
 #### Configuration Parameters
 
-header - ประเภท: อาร์เรย์ ส่วนหัวของแถว
-
 | Parameter    | Description                                                   |
 | ------------ | ------------------------------------------------------------- |
 | `headerName` | Specify header name of each column to validate with a message |
@@ -238,7 +234,7 @@ If there is validation, the data will not be imported and the output will return
 }
 ```
 
-For more details, please see our [demo](https://github.com/logicspark/csv-import-validation/tree/main/demo) folder. There are demos for both JavaScript and TypeScript. In the [example-files](https://github.com/logicspark/csv-import-validation/tree/main/example-files) folder, we provide a csv file with and without header for your ease of use.
+For more details, please see our [demo](https://github.com/logicspark/csv-import-validation/tree/main/demo) folder. There are demos for both JavaScript and TypeScript. In the [example-files](https://github.com/logicspark/csv-import-validation/tree/main/example-files) folder, we provide csv files with and without header for your ease of use.
 
 <p align="right">(<a href="#readme-top">back to top</a>)
 
@@ -246,12 +242,14 @@ For more details, please see our [demo](https://github.com/logicspark/csv-import
 
 Distributed under the MIT license. See `LICENSE.txt` for more information.
 
+[ExcelJS](https://github.com/exceljs/exceljs) is licensed under the MIT license.
+
 <p align="right">(<a href="#readme-top">back to top</a>)
 
 ## :pray: Acknowledgement
 
-- [Img Shields](https://shields.io)
 - [ExcelJS](https://github.com/exceljs/exceljs)
+- [Img Shields](https://shields.io)
 
 <p align="right">(<a href="#readme-top">back to top</a>)
 

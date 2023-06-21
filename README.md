@@ -140,7 +140,7 @@ There are two functions, namely:
 _If you import with validation, data will only be imported if there is no validation message._
 
 ```js
-const CSVConfig: ValidationConfig = [
+const csvConfig: ValidationConfig = [
   { headerName: "name", keyName: "name", type: "string" },
   { headerName: "ip", keyName: "ip", type: "string" },
   { headerName: "buildingId", keyName: "buildingId", type: "number" },
@@ -151,11 +151,11 @@ const CSVConfig: ValidationConfig = [
 ];
 
 const filePath = "files/your-csv-file-name.csv";
-const data = await CsvUtilities.readAndFileValidator(filePath, CSVConfig);
+const data = await CsvUtilities.readAndFileValidator(filePath, csvConfig);
 ```
 
 ```js
-const CSVConfig: ValidationConfig = [
+const csvConfig: ValidationConfig = [
   { headerName: "name", keyName: "name", type: "string" },
   { headerName: "ip", keyName: "ip", type: "string" },
   { headerName: "buildingId", keyName: "buildingId", type: "number" },
@@ -164,7 +164,7 @@ const CSVConfig: ValidationConfig = [
   { headerName: "room", keyName: "room", type: "string" },
   { headerName: "type", keyName: "type", type: "string" },
 ];
-const data = await CsvUtilities.readBufferAndValidator(buffer, CSVConfig);
+const data = await CsvUtilities.readBufferAndValidator(buffer, csvConfig);
 ```
 
 #### Configuration Parameters

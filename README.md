@@ -90,8 +90,8 @@ There are two functions, namely:
 - function readBufferMapArray: read CSV from Buffer
 
 ```js
-  const filePath = "files/your-csv-file-name.csv";
-  const reading =  readCsvFileMapArray(filePath);
+const filePath = "files/your-csv-file-name.csv";
+const reading = readCsvFileMapArray(filePath);
 ```
 
 ```js
@@ -151,7 +151,7 @@ const csvConfig: ValidationConfig = [
 ];
 
 const filePath = "files/your-csv-file-name.csv";
-const data = await CsvUtilities.readAndFileValidator(filePath, csvConfig);
+const data = await csvUtilities.readFileValidator(filePath, csvConfig);
 ```
 
 ```js
@@ -164,7 +164,7 @@ const csvConfig: ValidationConfig = [
   { headerName: "room", keyName: "room", type: "string" },
   { headerName: "type", keyName: "type", type: "string" },
 ];
-const data = await CsvUtilities.readBufferAndValidator(buffer, csvConfig);
+const data = await csvUtilities.readBufferValidator(buffer, csvConfig);
 ```
 
 #### Configuration Parameters

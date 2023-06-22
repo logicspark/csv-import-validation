@@ -79,7 +79,7 @@ There are 2 main features in the library. One reads CSV and returns an array whi
 To use the library, you will need to `import` to your targeted file
 
 ```js
-import { CsvUtilities } from "@logicspark/csv-import-validation";
+import { CsvUtilities } from "csv-import-validation";
 ```
 
 ### Functions that read CSV and return an array

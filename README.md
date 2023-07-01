@@ -48,7 +48,7 @@ _Support Node.js 14.21.0 and above_
 
 ### Installation
 
-Since the example is based on npm, you can use npm cmd to install CSV Import Validation. You can also install via yarn or pnpm.
+Since the example is based on npm, you can use npm to install CSV Import Validation. You can also install via yarn or pnpm.
 
 npm install
 
@@ -134,7 +134,7 @@ Each function has the same output as below:
 There are two functions, namely:
 
 - readFileValidator: read CSV by specifying a file path to the CSV file and validate data
-- readBufferValidator read CSV from Buffer and validate data
+- readBufferValidator: read CSV from Buffer and validate data.
   The validation can be applied to the header name and data type of each column.
 
 _If you import with validation, data will only be imported if there is no validation message._

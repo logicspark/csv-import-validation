@@ -40,14 +40,12 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
                 rowIndex + 1,
                 columnIndex
               )
-            : String(
-                valueConfig.headerName +
-                  " is required in " +
-                  " row / " +
+            : `${valueConfig.headerName} is required in row / ${
+                rowIndex + 1
+              }, column ${colNumberToColName(columnIndex)}
                   (rowIndex + 1) +
                   ", column" +
-                  colNumberToColName(columnIndex)
-              ),
+                  colNumberToColName(columnIndex)`,
         });
       }
 

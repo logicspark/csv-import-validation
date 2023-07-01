@@ -1,4 +1,3 @@
 export interface ColumnTypes {
-    [column: string]:'boolean' | 'number' |'string';
+  [column: string]: "boolean" | "number" | "string";
 }
-  

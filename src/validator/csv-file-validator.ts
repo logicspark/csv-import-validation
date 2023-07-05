@@ -77,7 +77,7 @@ function columnValidateType(columnVal: string, typeColumn: string) {
     if (isNaN(Number(columnVal))) {
       return false;
     }
-  } else if (typeColumn === "srting") {
+  } else if (typeColumn === "string") {
     if (typeof columnVal !== "string") {
       return false;
     }

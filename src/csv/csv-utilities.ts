@@ -63,7 +63,7 @@ class CSV {
     return new Promise(function (resolve, _) {
       if (!csvFileConfig) {
         return resolve({
-          inValidData: [{ message: "config headers are required" }],
+          invalidData: [{ message: "config headers are required" }],
         });
       }
 
@@ -77,7 +77,7 @@ class CSV {
       const messageError = validateHeaders(expectedHeaders, headers);
       if (messageError) {
         return resolve({
-          inValidData: [{ message: messageError }],
+          invalidData: [{ message: messageError }],
         });
       }
 
@@ -96,7 +96,7 @@ class CSV {
           const messageError = validateHeaders(expectedHeaders, headers);
           if (messageError) {
             return resolve({
-              inValidData: [{ message: messageError }],
+              invalidData: [{ message: messageError }],
             });
           }
 
@@ -106,7 +106,7 @@ class CSV {
           );
           if (resultValidate.invalidData.length) {
             return resolve({
-              inValidData: resultValidate.invalidData,
+              invalidData: resultValidate.invalidData,
             });
           }
 
@@ -122,7 +122,7 @@ class CSV {
     return new Promise(function (resolve, _) {
       if (!csvFileConfig) {
         return resolve({
-          inValidData: [{ message: "config headers are required" }],
+          invalidData: [{ message: "config headers are required" }],
         });
       }
 
@@ -142,7 +142,7 @@ class CSV {
           const messageError = validateHeaders(expectedHeaders, headers);
           if (messageError) {
             return resolve({
-              inValidData: [{ message: messageError }],
+              invalidData: [{ message: messageError }],
             });
           }
 
@@ -152,7 +152,7 @@ class CSV {
           );
           if (resultValidate.invalidData.length) {
             return resolve({
-              inValidData: resultValidate.invalidData,
+              invalidData: resultValidate.invalidData,
             });
           }
 

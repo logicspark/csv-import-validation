@@ -212,7 +212,7 @@ If there is validation, the data will not be imported and the output will return
 
 ```js
 {
-  "inValidData": [
+  "invalidData": [
     {
       "rowIndex": 1,
       "columnIndex": "A",

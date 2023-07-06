@@ -73,36 +73,32 @@ export function isDissimilarHeader(
 }
 
 function columnValidateType(columnVal: string, typeColumn: string) {
-  if (typeColumn === "number") {
-    if (isNaN(Number(columnVal))) {
-      return false;
-    }
-  } else if (typeColumn === "string") {
-    if (typeof columnVal !== "string") {
-      return false;
-    }
-  } else if (typeColumn === "boolean") {
-    if (
-      columnVal.toLowerCase() !== "true" ||
-      columnVal.toLowerCase() !== "false"
-    ) {
-      return false;
-    }
+  switch (typeColumn) {
+    case "number":
+      return !isNaN(Number(columnVal));
+    case "string":
+      return !(typeof columnVal !== "string");
+    case "boolean":
+      return !(
+        columnVal.toLowerCase() !== "true" ||
+        columnVal.toLowerCase() !== "false"
+      );
+    default:
+      return true;
   }
-  return true;
 }
 
 function convertType(value: string, type: string) {
-  if (type === "number") {
-    if (value !== "") {
-      return Number(value);
-    } else {
-      return null;
+  switch (type) {
+    case "number":
+      return Number(value) ? value !== "" : null;
+    case "string":
+      return String(value);
+    case "boolean": {
+      return Boolean(value);
     }
-  } else if (type === "string") {
-    return String(value);
-  } else if (type === "boolean") {
-    return Boolean(value);
+    default:
+      return value;
   }
 }
 
@@ -110,6 +106,7 @@ function colNumberToColName(columnNumber: number) {
   let columnName: any = [];
   while (columnNumber > 0) {
     let rem = columnNumber % 26;
+
     if (rem == 0) {
       columnName.push("Z");
       columnNumber = Math.floor(columnNumber / 26) - 1;
@@ -119,5 +116,6 @@ function colNumberToColName(columnNumber: number) {
       columnNumber = Math.floor(columnNumber / 26);
     }
   }
+
   return columnName.reverse().join("");
 }

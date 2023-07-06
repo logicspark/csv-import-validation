@@ -24,9 +24,9 @@ class CSV {
       .then((worksheet) => {
         const allData: any = [];
         worksheet = workbook.getWorksheet(1);
-        worksheet.eachRow((row, rowNumber) => {
+        worksheet.eachRow((row, _) => {
           const rowData: any = [];
-          row.eachCell((cell, colNumber) => {
+          row.eachCell((cell, _) => {
             rowData.push(cell.text);
           });
           allData.push(rowData);
@@ -45,9 +45,9 @@ class CSV {
       .read(stream)
       .then((worksheet) => {
         worksheet = workbook.getWorksheet(1);
-        worksheet.eachRow((row, rowNumber) => {
+        worksheet.eachRow((row, _) => {
           const rowData: any = [];
-          row.eachCell((cell, colNumber) => {
+          row.eachCell((cell, _) => {
             rowData.push(cell.text);
           });
           allData.push(rowData);
@@ -60,25 +60,27 @@ class CSV {
   }
 
   readFileValidator(csvFilePath: string, csvFileConfig: ValidationConfig) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, _) {
       if (!csvFileConfig) {
         return resolve({
           inValidData: [{ message: "config headers are required" }],
         });
       }
+
       const csvString = readFileSync(csvFilePath, "utf-8");
       const result = parse(csvString, { header: true });
       const headers = result.meta.fields;
       const expectedHeaders = csvFileConfig.map(
         (headers) => headers.headerName
       );
+
       const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
       if (
         dissimilarHeader.headers.length ||
         dissimilarHeader.expectedHeaders.length
       ) {
         let messageError = "Incorrect header names:";
-        dissimilarHeader.headers.forEach((element, index) => {
+        dissimilarHeader.headers.forEach((_, index) => {
           messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
         });
         messageError = messageError.slice(0, -1);
@@ -86,6 +88,7 @@ class CSV {
           inValidData: [{ message: messageError }],
         });
       }
+
       parse(csvString, {
         header: true,
         delimiter: ",",
@@ -97,13 +100,14 @@ class CSV {
           const expectedHeaders = csvFileConfig.map(
             (headers) => headers.headerName
           );
+
           const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
           if (
             dissimilarHeader.headers.length ||
             dissimilarHeader.expectedHeaders.length
           ) {
             let messageError = "Incorrect header names:";
-            dissimilarHeader.headers.forEach((element, index) => {
+            dissimilarHeader.headers.forEach((_, index) => {
               messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
             });
             messageError = messageError.slice(0, -1);
@@ -111,15 +115,18 @@ class CSV {
               inValidData: [{ message: messageError }],
             });
           }
+
           const resultValidate = _csvDataValidateFile(
             results.data,
             csvFileConfig
           );
+
           if (resultValidate.inValidData.length) {
             return resolve({
               inValidData: resultValidate.inValidData,
             });
           }
+
           return resolve({
             data: resultValidate.data,
           });
@@ -129,12 +136,13 @@ class CSV {
   }
 
   readBufferValidator(buffer: Buffer, csvFileConfig: ValidationConfig) {
-    return new Promise(async function (resolve, reject) {
+    return new Promise(async function (resolve, _) {
       if (!csvFileConfig) {
         return resolve({
           inValidData: [{ message: "config headers are required" }],
         });
       }
+
       const stream = Readable.from(buffer);
       parse(stream, {
         header: true,
@@ -148,12 +156,13 @@ class CSV {
             (headers) => headers.headerName
           );
           const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+
           if (
             dissimilarHeader.headers.length ||
             dissimilarHeader.expectedHeaders.length
           ) {
             let messageError = "Incorrect header names:";
-            dissimilarHeader.headers.forEach((element, index) => {
+            dissimilarHeader.headers.forEach((_, index) => {
               messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
             });
             messageError = messageError.slice(0, -1);
@@ -161,15 +170,18 @@ class CSV {
               inValidData: [{ message: messageError }],
             });
           }
+
           const resultValidate = _csvDataValidateFile(
             results.data,
             csvFileConfig
           );
+
           if (resultValidate.inValidData.length) {
             return resolve({
               inValidData: resultValidate.inValidData,
             });
           }
+
           return resolve({
             data: resultValidate.data,
           });

@@ -94,9 +94,9 @@ function validateColumnType(columnVal: string, typeColumn: string) {
     case "number":
       return !isNaN(Number(columnVal));
     case "boolean":
-      return !(
-        columnVal.toLowerCase() !== "true" ||
-        columnVal.toLowerCase() !== "false"
+      return (
+        columnVal.toLowerCase() === "true" ||
+        columnVal.toLowerCase() === "false"
       );
     default:
       return true;
@@ -106,7 +106,7 @@ function validateColumnType(columnVal: string, typeColumn: string) {
 function convertType(value: string, type: string) {
   switch (type) {
     case "number":
-      return Number(value) ? value !== "" : null;
+      return value !== "" ? Number(value) : null;
     case "string":
       return String(value);
     case "boolean": {

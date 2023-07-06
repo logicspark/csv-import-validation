@@ -2,7 +2,7 @@ import { isEmpty, isFunction, isNull } from "lodash";
 import {
   ValidationConfig,
   ParsedResults,
-} from "../../src/shared/interfaces/csv-file.interfaces";
+} from "../shared/interfaces/csv-file.interfaces";
 
 export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
   const file: ParsedResults = {

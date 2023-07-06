@@ -1,15 +1,18 @@
 import { Workbook } from "exceljs";
-import { bufferToStream } from "../shared/helpers";
 import * as path from "path";
 import { parse } from "papaparse";
 import { readFileSync } from "fs";
+import { Readable } from "stream";
+
 import { ValidationConfig } from "../shared/interfaces/csv-file.interfaces";
+import { bufferToStream } from "../shared/helpers";
 import {
   _csvDataValidateFile,
   isDissimilarHeader,
 } from "../validator/csv-file-validator";
-import { Readable } from "stream";
+
 const workbook = new Workbook();
+
 class CSV {
   readCsvFileMapArray(csvFilePath: string) {
     const extname = path.extname(csvFilePath);

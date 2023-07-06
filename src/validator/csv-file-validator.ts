@@ -14,7 +14,7 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
     const columnData: any = {};
     config.forEach(function (column, columnIndex) {
       const valueConfig = config[columnIndex];
-      let columnVal = row[column.headerName];
+      const columnVal = row[column.headerName];
 
       if (!validateColumnType(columnVal, valueConfig.type)) {
         file.invalidData.push({
@@ -93,8 +93,6 @@ function validateColumnType(columnVal: string, typeColumn: string) {
   switch (typeColumn) {
     case "number":
       return !isNaN(Number(columnVal));
-    case "string":
-      return !(typeof columnVal !== "string");
     case "boolean":
       return !(
         columnVal.toLowerCase() !== "true" ||

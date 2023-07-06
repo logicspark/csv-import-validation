@@ -104,9 +104,9 @@ class CSV {
             results.data,
             csvFileConfig
           );
-          if (resultValidate.inValidData.length) {
+          if (resultValidate.invalidData.length) {
             return resolve({
-              inValidData: resultValidate.inValidData,
+              inValidData: resultValidate.invalidData,
             });
           }
 
@@ -150,9 +150,9 @@ class CSV {
             results.data,
             csvFileConfig
           );
-          if (resultValidate.inValidData.length) {
+          if (resultValidate.invalidData.length) {
             return resolve({
-              inValidData: resultValidate.inValidData,
+              inValidData: resultValidate.invalidData,
             });
           }
 

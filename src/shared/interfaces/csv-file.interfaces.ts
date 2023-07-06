@@ -27,7 +27,7 @@ export interface RowError {
 
 export interface ParsedResults<Row = any, Error = RowError> {
   data: Row[];
-  inValidData: Error[];
+  invalidData: Error[];
 }
 
 export type ValidationConfig = FieldSchema[];

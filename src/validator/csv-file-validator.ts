@@ -6,7 +6,7 @@ import {
 
 export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
   const file: ParsedResults = {
-    inValidData: [],
+    invalidData: [],
     data: [],
   };
 
@@ -17,7 +17,7 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
       let columnVal = row[column.headerName];
 
       if (!validateColumnType(columnVal, valueConfig.type)) {
-        file.inValidData.push({
+        file.invalidData.push({
           rowIndex: rowIndex + 1,
           columnIndex: colNumberToColName(columnIndex + 1),
           message: isFunction(valueConfig.requiredError)
@@ -31,7 +31,7 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
       }
 
       if (valueConfig.required && (isNull(columnVal) || isEmpty(columnVal))) {
-        file.inValidData.push({
+        file.invalidData.push({
           rowIndex: rowIndex + 1,
           columnIndex: columnIndex,
           message: isFunction(valueConfig.requiredError)

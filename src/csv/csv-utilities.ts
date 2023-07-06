@@ -8,7 +8,7 @@ import { ValidationConfig } from "../shared/interfaces/csv-file.interfaces";
 import { bufferToStream } from "../shared/helpers";
 import {
   _csvDataValidateFile,
-  isDissimilarHeader,
+  validateHeaders,
 } from "../validator/csv-file-validator";
 
 const workbook = new Workbook();
@@ -74,16 +74,8 @@ class CSV {
         (headers) => headers.headerName
       );
 
-      const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
-      if (
-        dissimilarHeader.headers.length ||
-        dissimilarHeader.expectedHeaders.length
-      ) {
-        let messageError = "Incorrect header names:";
-        dissimilarHeader.headers.forEach((_, index) => {
-          messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
-        });
-        messageError = messageError.slice(0, -1);
+      const messageError = validateHeaders(expectedHeaders, headers);
+      if (messageError) {
         return resolve({
           inValidData: [{ message: messageError }],
         });
@@ -101,16 +93,8 @@ class CSV {
             (headers) => headers.headerName
           );
 
-          const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
-          if (
-            dissimilarHeader.headers.length ||
-            dissimilarHeader.expectedHeaders.length
-          ) {
-            let messageError = "Incorrect header names:";
-            dissimilarHeader.headers.forEach((_, index) => {
-              messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
-            });
-            messageError = messageError.slice(0, -1);
+          const messageError = validateHeaders(expectedHeaders, headers);
+          if (messageError) {
             return resolve({
               inValidData: [{ message: messageError }],
             });
@@ -120,7 +104,6 @@ class CSV {
             results.data,
             csvFileConfig
           );
-
           if (resultValidate.inValidData.length) {
             return resolve({
               inValidData: resultValidate.inValidData,
@@ -155,17 +138,9 @@ class CSV {
           const expectedHeaders = csvFileConfig.map(
             (headers) => headers.headerName
           );
-          const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
 
-          if (
-            dissimilarHeader.headers.length ||
-            dissimilarHeader.expectedHeaders.length
-          ) {
-            let messageError = "Incorrect header names:";
-            dissimilarHeader.headers.forEach((_, index) => {
-              messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
-            });
-            messageError = messageError.slice(0, -1);
+          const messageError = validateHeaders(expectedHeaders, headers);
+          if (messageError) {
             return resolve({
               inValidData: [{ message: messageError }],
             });
@@ -175,7 +150,6 @@ class CSV {
             results.data,
             csvFileConfig
           );
-
           if (resultValidate.inValidData.length) {
             return resolve({
               inValidData: resultValidate.inValidData,

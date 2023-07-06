@@ -16,7 +16,7 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
       const valueConfig = config[columnIndex];
       let columnVal = row[column.headerName];
 
-      if (!columnValidateType(columnVal, valueConfig.type)) {
+      if (!validateColumnType(columnVal, valueConfig.type)) {
         file.inValidData.push({
           rowIndex: rowIndex + 1,
           columnIndex: colNumberToColName(columnIndex + 1),
@@ -60,6 +60,23 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
   return file;
 }
 
+export function validateHeaders(expectedHeaders: string[], headers: string[]) {
+  const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+  if (
+    dissimilarHeader.headers.length ||
+    dissimilarHeader.expectedHeaders.length
+  ) {
+    let messageError = "Incorrect header names:";
+    dissimilarHeader.headers.forEach((_, index) => {
+      messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
+    });
+    messageError = messageError.slice(0, -1);
+    return messageError;
+  }
+
+  return null;
+}
+
 export function isDissimilarHeader(
   expectedHeaders: string[],
   headers: string[]
@@ -72,7 +89,7 @@ export function isDissimilarHeader(
   };
 }
 
-function columnValidateType(columnVal: string, typeColumn: string) {
+function validateColumnType(columnVal: string, typeColumn: string) {
   switch (typeColumn) {
     case "number":
       return !isNaN(Number(columnVal));

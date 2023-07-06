@@ -1,5 +1,5 @@
-import { Workbook } from "exceljs";
 import * as path from "path";
+import { Workbook } from "exceljs";
 import { parse } from "papaparse";
 import { readFileSync } from "fs";
 import { Readable } from "stream";
@@ -23,7 +23,6 @@ class CSV {
       .readFile(csvFilePath)
       .then((worksheet) => {
         const allData: any = [];
-        worksheet = workbook.getWorksheet(1);
         worksheet.eachRow((row, _) => {
           const rowData: any = [];
           row.eachCell((cell, _) => {
@@ -44,7 +43,6 @@ class CSV {
     return workbook.csv
       .read(stream)
       .then((worksheet) => {
-        worksheet = workbook.getWorksheet(1);
         worksheet.eachRow((row, _) => {
           const rowData: any = [];
           row.eachCell((cell, _) => {

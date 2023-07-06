@@ -119,7 +119,7 @@ class CSV {
   }
 
   readBufferValidator(buffer: Buffer, csvFileConfig: ValidationConfig) {
-    return new Promise(async function (resolve, _) {
+    return new Promise(function (resolve, _) {
       if (!csvFileConfig) {
         return resolve({
           inValidData: [{ message: "config headers are required" }],

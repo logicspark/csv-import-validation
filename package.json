@@ -1,7 +1,7 @@
 {
   "name": "csv-import-validation",
   "private": false,
-  "version": "1.0.1-19",
+  "version": "1.0.1-20",
   "main": "dist/index.js",
   "description": "Validation library for CSV files against defined schema",
   "scripts": {

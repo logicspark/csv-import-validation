@@ -1,8 +1,7 @@
-
 {
   "name": "csv-import-validation",
   "private": false,
-  "version": "0.1.2-1",
+  "version": "0.1.2-2",
   "main": "dist/index.js",
   "description": "Validation library for CSV files against defined schema",
   "scripts": {
@@ -10,7 +9,6 @@
     "build": "rimraf ./dist && tsc",
     "start": "npm run build  && node dist/index.js"
   },
-  
   "keywords": [
     "typescript",
     "csv import",

@@ -1,3 +1,4 @@
+
 {
   "name": "csv-import-validation",
   "private": false,
@@ -9,6 +10,7 @@
     "build": "rimraf ./dist && tsc",
     "start": "npm run build  && node dist/index.js"
   },
+  
   "keywords": [
     "typescript",
     "csv import",

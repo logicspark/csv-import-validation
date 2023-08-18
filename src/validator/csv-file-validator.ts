@@ -22,10 +22,10 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
           columnIndex: colNumberToColName(columnIndex + 1),
           message: isFunction(valueConfig.requiredError)
             ? valueConfig.requiredError(
-                valueConfig.headerName,
-                rowIndex + 1,
-                columnIndex
-              )
+              valueConfig.headerName,
+              rowIndex + 1,
+              columnIndex
+            )
             : `${valueConfig.headerName}'s type is ${valueConfig.type}.`,
         });
       }
@@ -33,19 +33,14 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
       if (valueConfig.required && (isNull(columnVal) || isEmpty(columnVal))) {
         file.invalidData.push({
           rowIndex: rowIndex + 1,
-          columnIndex: columnIndex,
+          columnIndex: colNumberToColName(columnIndex + 1),
           message: isFunction(valueConfig.requiredError)
             ? valueConfig.requiredError(
-                valueConfig.headerName,
-                rowIndex + 1,
-                columnIndex
-              )
-            : `${valueConfig.headerName} is required in row / ${
-                rowIndex + 1
-              }, column ${colNumberToColName(columnIndex)}
-                  (rowIndex + 1) +
-                  ", column" +
-                  colNumberToColName(columnIndex)`,
+              valueConfig.headerName,
+              rowIndex + 1,
+              columnIndex
+            )
+            : `${valueConfig.headerName}'s is required.`,
         });
       }
 
@@ -53,10 +48,29 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
         columnVal,
         valueConfig.type
       );
-    });
+      
+      if (valueConfig.unique) {
+        const valUnique = file.data.find((el) => el[valueConfig.keyName] === columnData[valueConfig.keyName]);
+        if (valUnique) {
+          file.invalidData.push({
+            rowIndex: rowIndex + 1,
+            columnIndex: colNumberToColName(columnIndex + 1),
+            message: isFunction(valueConfig.requiredError)
+              ? valueConfig.requiredError(
+                valueConfig.headerName,
+                rowIndex + 1,
+                columnIndex
+              )
+              : `${valueConfig.headerName} must be unique.`,
+          });
+        }
+      }
 
+    });
     file.data.push(columnData);
   });
+  console.log(file);
+
   return file;
 }
 
@@ -94,10 +108,7 @@ function validateColumnType(columnVal: string, typeColumn: string) {
     case "number":
       return !isNaN(Number(columnVal));
     case "boolean":
-      return (
-        columnVal.toLowerCase() === "true" ||
-        columnVal.toLowerCase() === "false"
-      );
+      return ['true', 'false'].includes(columnVal.toLowerCase())
     default:
       return true;
   }
@@ -110,7 +121,8 @@ function convertType(value: string, type: string) {
     case "string":
       return String(value);
     case "boolean": {
-      return Boolean(value);
+      const myBool = (value.toLowerCase() === 'true' || Number(value) > 0);
+      return myBool;
     }
     default:
       return value;

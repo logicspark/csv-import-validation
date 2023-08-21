@@ -108,7 +108,7 @@ function validateColumnType(columnVal: string, typeColumn: string) {
     case "number":
       return !isNaN(Number(columnVal));
     case "boolean":
-      return ['true', 'false'].includes(columnVal.toLowerCase())
+      return ['true', 'false','0','1'].includes(columnVal.toLowerCase())
     default:
       return true;
   }

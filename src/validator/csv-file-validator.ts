@@ -69,8 +69,6 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
     });
     file.data.push(columnData);
   });
-  console.log(file);
-
   return file;
 }
 

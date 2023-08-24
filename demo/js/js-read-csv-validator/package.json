@@ -1,6 +1,6 @@
 {
-  "name": "readcsvfile",
-  "version": "1.0.0",
+  "name": "js-read-csv-validator",
+  "version": "1.0.1-rc.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "csv-import-validation": "^1.0.1-19"
+    "csv-import-validation": "^0.1.2-rc.0"
   }
 }

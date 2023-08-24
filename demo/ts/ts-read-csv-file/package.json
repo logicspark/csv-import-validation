@@ -1,16 +1,16 @@
 {
-  "name": "readcsvandvalidator",
+  "name": "ts-read-csv-file",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && tsc && node dist/index.js",
-    "start": "npm run build  && node dist/index.js"
+    "start": "npm run build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "rimraf": "^5.0.0",
     "ts-node": "^10.9.1",

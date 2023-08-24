@@ -1,10 +1,14 @@
-
-
-const  CsvUtilities = require('csv-import-validation').CsvUtilities;
+const CsvUtilities = require("csv-import-validation").CsvUtilities;
 const main = async () => {
   const filePath = "demo.csv";
   const CSVConfig = [
-    { headerName: "Order ID", keyName: "orderID", type: "number" },
+    {
+      headerName: "Order ID",
+      keyName: "orderID",
+      type: "number",
+      require: true,
+      unique: true,
+    },
     { headerName: "Product Name", keyName: "productName", type: "string" },
     { headerName: "Customer Name", keyName: "customerName", type: "string" },
     { headerName: "Quantity", keyName: "quantity", type: "number" },

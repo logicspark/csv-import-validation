@@ -4,7 +4,7 @@ const main = async () => {
     const filePath = "demo.csv";
     const reading = readFileSync(filePath);
     const CSVConfig: ValidationConfig = [
-        { headerName: 'Order ID', keyName: 'orderID', type: 'number' },
+        { headerName: 'Order ID', keyName: 'orderID', type: 'number', required: true, unique: true },
         { headerName: 'Product Name', keyName: 'productName', type: 'string' },
         { headerName: 'Customer Name', keyName: 'customerName', type: 'string' },
         { headerName: 'Quantity', keyName: 'quantity', type: 'number' },

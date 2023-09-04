@@ -141,13 +141,22 @@ _If you import with validation, data will only be imported if there is no valida
 
 ```js
 const csvConfig: ValidationConfig = [
-  { headerName: "name", keyName: "name", type: "string" },
-  { headerName: "ip", keyName: "ip", type: "string" },
-  { headerName: "buildingId", keyName: "buildingId", type: "number" },
-  { headerName: "floorId", keyName: "floorId", type: "number" },
-  { headerName: "zoneId", keyName: "zoneId", type: "string" },
-  { headerName: "room", keyName: "room", type: "string" },
-  { headerName: "type", keyName: "type", type: "string" },
+  {
+    headerName: "Order ID",
+    keyName: "orderID",
+    type: "number",
+    required: true,
+    unique: true,
+  },
+  { headerName: "Product Name", keyName: "productName", type: "string" },
+  { headerName: "Customer Name", keyName: "customerName", type: "string" },
+  { headerName: "Quantity", keyName: "quantity", type: "number" },
+  { headerName: "Price", keyName: "price", type: "number" },
+  { headerName: "Discount", keyName: "discount", type: "number" },
+  { headerName: "Total", keyName: "total", type: "string" },
+  { headerName: "Region", keyName: "region", type: "string" },
+  { headerName: "Category", keyName: "category", type: "string" },
+  { headerName: "Discount Rate", keyName: "discountRate", type: "number" },
 ];
 
 const filePath = "files/your-csv-file-name.csv";
@@ -156,54 +165,65 @@ const data = await csvUtilities.readFileValidator(filePath, csvConfig);
 
 ```js
 const csvConfig: ValidationConfig = [
-  { headerName: "name", keyName: "name", type: "string" },
-  { headerName: "ip", keyName: "ip", type: "string" },
-  { headerName: "buildingId", keyName: "buildingId", type: "number" },
-  { headerName: "floorId", keyName: "floorId", type: "number" },
-  { headerName: "zoneId", keyName: "zoneId", type: "string" },
-  { headerName: "room", keyName: "room", type: "string" },
-  { headerName: "type", keyName: "type", type: "string" },
+  {
+    headerName: "Order ID",
+    keyName: "orderID",
+    type: "number",
+    required: true,
+    unique: true,
+  },
+  { headerName: "Product Name", keyName: "productName", type: "string" },
+  { headerName: "Customer Name", keyName: "customerName", type: "string" },
+  { headerName: "Quantity", keyName: "quantity", type: "number" },
+  { headerName: "Price", keyName: "price", type: "number" },
+  { headerName: "Discount", keyName: "discount", type: "number" },
+  { headerName: "Total", keyName: "total", type: "string" },
+  { headerName: "Region", keyName: "region", type: "string" },
+  { headerName: "Category", keyName: "category", type: "string" },
+  { headerName: "Discount Rate", keyName: "discountRate", type: "number" },
 ];
 const data = await csvUtilities.readBufferValidator(buffer, csvConfig);
 ```
 
 #### Configuration Parameters
 
-| Parameter    | Description                                                   |
-| ------------ | ------------------------------------------------------------- |
-| `headerName` | Specify header name of each column to validate with a message |
-| `keyName`    | Specify key to map data of the corresponding column           |
-| `type`       | Specify data type of each column (`number`, `string`)         |
+| Parameter    | Description                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `headerName` | Specify header name of each column to validate with a message                                  |
+| `keyName`    | Specify key to map data of the corresponding column                                            |
+| `type`       | Specify data type of each column (`number`, `string`,`boolean`)                                |
+| `required`   | Type (`Boolean`) If required is true then a column value will be checked if it is not empty    |
+| `unique`     | Type (`Boolean`) If it is true all header (title) column values will be checked for uniqueness |
 
 Each function has the same output. If there is no validation message, the output will return objects of data imported.
 
 ```js
 {
   "data": [
-    {
-      "orderID": 1,
-      "productName": "Eldon Base for stackable storage shelf, platinum",
-      "customerName": "Muhammed MacIntyre",
-      "quantity": 3,
-      "price": -213.25,
-      "discount": 38.94,
-      "total": "35",
-      "region": "Nunavut",
-      "category": "Storage & Organization",
-      "discountRate": 0.8
+   {
+      orderID: 1,
+      productName: 'Eldon Base for stackable storage shelf, platinum',
+      customerName: 'Muhammed MacIntyre',
+      quantity: 3,
+      price: -213.25,
+      discount: 38.94,
+      total: '35',
+      region: 'Nunavut',
+      category: 'Storage & Organization',
+      discountRate: 0.8
     },
     {
-      "orderID": 2,
-      "productName": "1.7 Cubic Foot Compact \"Cube\" Office Refrigerators",
-      "customerName": "Barry French",
-      "quantity": 293,
-      "price": 457.81,
-      "discount": 208.16,
-      "total": "68.02",
-      "region": "Nunavut",
-      "category": "Appliances",
-      "discountRate": 0.58
-    }
+      orderID: 2,
+      productName: '1.7 Cubic Foot Compact "Cube" Office Refrigerators',
+      customerName: 'Barry French',
+      quantity: 293,
+      price: 457.81,
+      discount: 208.16,
+      total: '68.02',
+      region: 'Nunavut',
+      category: 'Appliances',
+      discountRate: 0.58
+    },
   ]
 }
 ```
@@ -224,9 +244,19 @@ If there is validation, the data will not be imported and the output will return
       "message": "Quantity's type is number."
     },
     {
+      rowIndex: 6,
+      columnIndex: 'A',
+      message: "Order ID's is required."
+    },
+    {
       "rowIndex": 7,
       "columnIndex": "A",
       "message": "Order ID's type is number."
+    },
+    {
+      rowIndex: 9,
+      columnIndex: 'A',
+      message: 'Order ID must be unique.'
     }
   ]
 }

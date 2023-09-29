@@ -48,7 +48,7 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
         columnVal,
         valueConfig.type
       );
-      
+
       if (valueConfig.unique) {
         const valUnique = file.data.find((el) => el[valueConfig.keyName] === columnData[valueConfig.keyName]);
         if (valUnique) {
@@ -74,12 +74,14 @@ export function _csvDataValidateFile(csvData: any[], config: ValidationConfig) {
 
 export function validateHeaders(expectedHeaders: string[], headers: string[]) {
   const dissimilarHeader = isDissimilarHeader(expectedHeaders, headers);
+
+
   if (
     dissimilarHeader.headers.length ||
     dissimilarHeader.expectedHeaders.length
   ) {
     let messageError = "Incorrect header names:";
-    dissimilarHeader.headers.forEach((_, index) => {
+    dissimilarHeader.headers.forEach((_, index) => {  
       messageError += ` ${dissimilarHeader.headers[index]} / ${dissimilarHeader.expectedHeaders[index]},`;
     });
     messageError = messageError.slice(0, -1);
@@ -103,10 +105,10 @@ export function isDissimilarHeader(
 
 function validateColumnType(columnVal: string, typeColumn: string) {
   switch (typeColumn) {
-    case "number":
+    case "number":      
       return !isNaN(Number(columnVal));
     case "boolean":
-      return ['true', 'false','0','1'].includes(columnVal.toLowerCase())
+      return ['true', 'false', '0', '1'].includes(columnVal.toLowerCase())
     default:
       return true;
   }

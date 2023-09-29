@@ -192,8 +192,8 @@ const data = await csvUtilities.readBufferValidator(buffer, csvConfig);
 | `headerName` | Specify header name of each column to validate with a message                                  |
 | `keyName`    | Specify key to map data of the corresponding column                                            |
 | `type`       | Specify data type of each column (`number`, `string`,`boolean`)                                |
-| `required`   | Type (`Boolean`) If required is true then a column value will be checked if it is not empty    |
-| `unique`     | Type (`Boolean`) If it is true all header (title) column values will be checked for uniqueness |
+| `required`   | Specify if a column value is needed (`boolean`)                                                |
+| `unique`     | Specify that a column header title cannot duplicate with another column header (`boolean`)     |
 
 Each function has the same output. If there is no validation message, the output will return objects of data imported.
 
